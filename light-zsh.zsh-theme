@@ -171,4 +171,4 @@ build_prompt() {
 }
 
 PROMPT='%{$fg[cyan]%}╭─ %{$reset_color%}$(build_prompt)
-%{$fg[cyan]%}╰─%{$reset_color%}%{$fg[green]%}%{$terminal_icon%}%{$reset_color%} '
+%{$fg[cyan]%}╰─%{$reset_color%}%{$fg[green]%}$terminal_icon%{$reset_color%} '
