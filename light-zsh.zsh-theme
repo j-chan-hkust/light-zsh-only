@@ -67,6 +67,33 @@ prompt_dir() {
     echo -n "%F{cyan}$folder_icon %F{blue}%~%f"
 }
 
+# Git: vcs_info configuration (run once at theme load time)
+setopt promptsubst
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' get-revision true
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr '%{%F{green}%}+'
+zstyle ':vcs_info:*' unstagedstr '%{%F{yellow}%}M'
+zstyle ':vcs_info:*' formats ' %u%c'
+zstyle ':vcs_info:*' actionformats ' %u%c'
+
+### git: Show marker (U) if there are untracked files in repository
+# Make sure you have added staged to your 'formats':  %c
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+
++vi-git-untracked() {
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+        git status --porcelain | grep '??' &> /dev/null ; then
+        # This will show the marker if there are any untracked files in repo.
+        # If instead you want to show the marker only if there are untracked
+        # files in $PWD, use:
+        # [[ -n $(git ls-files --others --exclude-standard) ]] ; then
+        hook_com[staged]+='%{%F{red}%}U'
+    fi
+}
+
 # Git: branch/detached head, dirty status
 prompt_git() {
     (( $+commands[git] )) || return
@@ -106,34 +133,6 @@ prompt_git() {
         elif [[ -e "${repo_path}/rebase" || -e "${repo_path}/rebase-apply" || -e "${repo_path}/rebase-merge" || -e "${repo_path}/../.dotest" ]]; then
             mode=" %{%F{yellow}%}>R>"
         fi
-
-        setopt promptsubst
-        autoload -Uz vcs_info
-
-        zstyle ':vcs_info:*' enable git
-        zstyle ':vcs_info:*' get-revision true
-        zstyle ':vcs_info:*' check-for-changes true
-        zstyle ':vcs_info:*' stagedstr '%{%F{green}%}+'
-        zstyle ':vcs_info:*' unstagedstr '%{%F{yellow}%}M'
-        zstyle ':vcs_info:*' formats ' %u%c'
-        zstyle ':vcs_info:*' actionformats ' %u%c'
-
-        ### Display the existence of files not yet known to VCS
-
-        ### git: Show marker (U) if there are untracked files in repository
-        # Make sure you have added staged to your 'formats':  %c
-        zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-
-        +vi-git-untracked() {
-            if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-                git status --porcelain | grep '??' &> /dev/null ; then
-                # This will show the marker if there are any untracked files in repo.
-                # If instead you want to show the marker only if there are untracked
-                # files in $PWD, use:
-                # [[ -n $(git ls-files --others --exclude-standard) ]] ; then
-                hook_com[staged]+='%{%F{red}%}U'
-            fi
-        }
 
         vcs_info
 
