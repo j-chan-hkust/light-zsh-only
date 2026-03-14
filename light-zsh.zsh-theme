@@ -64,7 +64,7 @@ prompt_context() {
 
 # Dir: current working directory
 prompt_dir() {
-    echo -n "%F{cyan}$folder_icon %F{blue}%~%f"
+    echo -n "%F{cyan}$folder_icon %F{33}%~%f"
 }
 
 # Git: vcs_info configuration (run once at theme load time)

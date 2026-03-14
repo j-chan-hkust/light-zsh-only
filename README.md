@@ -1,8 +1,10 @@
 # Light-Zsh Theme
 
-**Light-Zsh** is a lightweight and clean Zsh theme optimized for light-colored terminals, especially the native macOS terminal. Perfect for those who prefer a minimalistic and fast terminal experience.
+**Light-Zsh** is a lightweight and clean Zsh theme optimized for both light-colored and dark-colored terminals, especially the native macOS terminal and [iTerm](https://iterm2.com). Perfect for those who prefer a minimalistic and fast terminal experience.
 
-![Light-Zsh](screenshot.png)
+![Light-Zsh Demo (Dark)](demo-dark.png)
+
+![Light-Zsh Demo (Light)](demo-light.png)
 
 ## Features
 
