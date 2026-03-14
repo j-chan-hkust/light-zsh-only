@@ -152,7 +152,7 @@ build_prompt() {
     # Check if both conda and virtual environments are active
     if [[ -n "$CONDA_DEFAULT_ENV" && -n "$VIRTUAL_ENV" ]]; then
         # Determine which Python is currently in use
-        if [[ "$(which python)" == "$VIRTUAL_ENV/bin/python" ]]; then
+        if [[ "$(whence -p python)" == "$VIRTUAL_ENV/bin/python" ]]; then
             prompt_virtualenv
             prompt_condaenv
         else
