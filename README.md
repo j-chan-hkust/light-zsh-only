@@ -2,7 +2,7 @@
 
 **Light-Zsh-Only** exists because the oh my zsh community won't create a nice readable light mode theme. Likely looks terrible for dark mode, but that's not my problem.
 
-![Light-Zsh Demo (Light)](demo-light.png)
+![Light-Zsh-Only Demo](demo-light.png)
 
 ## Features
 
@@ -56,14 +56,14 @@ If you see a series of icons (such as the Apple logo, folder, and arrows) like b
    Copy or move the theme file to your Zsh themes directory (`~/.oh-my-zsh/custom/themes/`):
 
    ```zsh
-   cp light-zsh-only/light-zsh.zsh-theme ~/.oh-my-zsh/custom/themes/
+   cp light-zsh-only/light-zsh-only.zsh-theme ~/.oh-my-zsh/custom/themes/
    ```
 
 3. **Set the Theme in Your `.zshrc` File**:
    Open your `.zshrc` file and set the `ZSH_THEME` variable:
 
    ```zsh
-   ZSH_THEME="light-zsh"
+   ZSH_THEME="light-zsh-only"
    ```
 
 4. **Apply the Changes**:
