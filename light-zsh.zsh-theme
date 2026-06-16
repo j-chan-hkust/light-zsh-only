@@ -32,7 +32,7 @@ prompt_status() {
     local -a symbols
 
     [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$err_icon"
-    [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}$root_icon"
+    [[ $UID -eq 0 ]] && symbols+="%{%F{136}%}$root_icon"
     [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}$background_job_icon"
 
     [[ -n "$symbols" ]] && echo -n "$symbols%f "
@@ -43,7 +43,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 prompt_virtualenv() {
     # if [[ -n "$VIRTUAL_ENV" && -n "$VIRTUAL_ENV_DISABLE_PROMPT" ]]; then
     if [[ -n "$VIRTUAL_ENV" ]]; then
-        echo -n "(%F{yellow}${VIRTUAL_ENV:t:gs/%/%%}%f) "
+        echo -n "(%F{136}${VIRTUAL_ENV:t:gs/%/%%}%f) "
     fi
 }
 
@@ -63,8 +63,14 @@ prompt_context() {
 }
 
 # Dir: current working directory
+export LSCOLORS="exfxcxdxbxegedabagacad"
+export LS_COLORS="di=34:ln=35:so=32:pi=38;5;136:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+(( $+commands[gls] )) && alias ls='gls --color=auto'
+
 prompt_dir() {
-    echo -n "%F{cyan}$folder_icon %F{33}%~%f"
+    echo -n "%F{cyan}$folder_icon %F{blue}%~%f"
 }
 
 # Git: vcs_info configuration (run once at theme load time)
@@ -75,7 +81,7 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr '%{%F{green}%}+'
-zstyle ':vcs_info:*' unstagedstr '%{%F{yellow}%}M'
+zstyle ':vcs_info:*' unstagedstr '%{%F{136}%}M'
 zstyle ':vcs_info:*' formats ' %u%c'
 zstyle ':vcs_info:*' actionformats ' %u%c'
 
@@ -112,7 +118,7 @@ prompt_git() {
 
         branch_color=" %{%F{green}%}"  # Default to green if no dirty files
         if [[ -n $dirty ]]; then
-            branch_color=" %{%F{yellow}%}"
+            branch_color=" %{%F{136}%}"
         fi
 
         local ahead behind
@@ -127,11 +133,11 @@ prompt_git() {
         fi
 
         if [[ -e "${repo_path}/BISECT_LOG" ]]; then
-            mode=" %{%F{yellow}%}<B>"
+            mode=" %{%F{136}%}<B>"
         elif [[ -e "${repo_path}/MERGE_HEAD" ]]; then
-            mode=" %{%F{yellow}%}>M<"
+            mode=" %{%F{136}%}>M<"
         elif [[ -e "${repo_path}/rebase" || -e "${repo_path}/rebase-apply" || -e "${repo_path}/rebase-merge" || -e "${repo_path}/../.dotest" ]]; then
-            mode=" %{%F{yellow}%}>R>"
+            mode=" %{%F{136}%}>R>"
         fi
 
         vcs_info
