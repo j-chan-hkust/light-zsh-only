@@ -1,6 +1,6 @@
 # Light-Zsh-Only Theme
 
-**Light-Zsh-Only** exists because the oh my zsh community won't create a nice readable light mode theme. Likely looks terrible for dark mode, but that's not my problem.
+**Light-Zsh-Only** exists because the oh my zsh community doesn't seem to have a nice readable light mode theme. Likely looks terrible for dark mode, but that's not my problem.
 
 ![Light-Zsh-Only Demo](demo-light.png)
 
