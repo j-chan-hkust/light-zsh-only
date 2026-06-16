@@ -1,8 +1,6 @@
-# Light-Zsh Theme
+# Light-Zsh-Only Theme
 
-**Light-Zsh** is a lightweight and clean Zsh theme optimized for both light-colored and dark-colored terminals, especially the native macOS terminal and [iTerm](https://iterm2.com). Perfect for those who prefer a minimalistic and fast terminal experience.
-
-![Light-Zsh Demo (Dark)](demo-dark.png)
+**Light-Zsh-Only** exists because the oh my zsh community won't create a nice readable light mode theme. Likely looks terrible for dark mode, but that's not my problem.
 
 ![Light-Zsh Demo (Light)](demo-light.png)
 
@@ -18,7 +16,7 @@
 
 ## Compatibility
 
-**Light-Zsh** requires a [Nerd Font](https://github.com/ryanoasis/nerd-fonts) to properly render all the icons and symbols used in the theme. Any Nerd Font will work, so feel free to choose one that suits your preference.
+**Light-Zsh-Only** requires a [Nerd Font](https://github.com/ryanoasis/nerd-fonts) to properly render all the icons and symbols used in the theme. Any Nerd Font will work, so feel free to choose one that suits your preference.
 
 > [!TIP]
 >
@@ -29,6 +27,9 @@
 > ```zsh
 > brew install font-jetbrains-mono-nerd-font
 > ```
+>
+> After the installation, remember to set the font in your terminal to the newly installed font
+
 
 ### Testing Font Compatibility
 
@@ -48,14 +49,14 @@ If you see a series of icons (such as the Apple logo, folder, and arrows) like b
    Clone the repository to your local machine:
 
    ```zsh
-   git clone https://github.com/InfinityUniverse0/light-zsh.git
+   git clone https://github.com/j-chan-hkust/light-zsh-only.git
    ```
 
 2. **Move the Theme to Your Zsh Themes Directory**:
    Copy or move the theme file to your Zsh themes directory (`~/.oh-my-zsh/custom/themes/`):
 
    ```zsh
-   cp light-zsh/light-zsh.zsh-theme ~/.oh-my-zsh/custom/themes/
+   cp light-zsh-only/light-zsh.zsh-theme ~/.oh-my-zsh/custom/themes/
    ```
 
 3. **Set the Theme in Your `.zshrc` File**:
@@ -73,16 +74,3 @@ If you see a series of icons (such as the Apple logo, folder, and arrows) like b
    ```
 
 Your terminal should now be using the Light-Zsh theme, displaying all the useful information you need at a glance.
-
-## Notes
-
-Feel free to adjust the details to better suit your preferences or to add any other instructions specific to your setup.
-
-## Contact
-
-For any questions, suggestions, or feedback, feel free to reach out:
-
-- **Email**: wtxInfinity@outlook.com
-- **GitHub Issues**: [Issues Page](https://github.com/InfinityUniverse0/light-zsh/issues)
-
-Feel free to contribute, report issues, or suggest improvements!
